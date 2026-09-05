@@ -1,115 +1,188 @@
-*{
-    padding: 0%;
-    margin: 0%;
+/* Reset CSS */
+* {
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
-
-body{
-    background:#f7f2e9;
-    font-family:'Poppins',sans-serif;
 }
 
-/* Navbar */
+body {
+    background: #f7f2e9;
+    font-family: 'Poppins', sans-serif;
+}
 
-.custom-navbar{
+/* Navbar Container */
+.custom-navbar {
     background: #fdf8ef;
-    padding: 20px 0;
+    padding: 15px 0;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Flex layout helper if Bootstrap container is inside */
+.custom-navbar .container,
+.custom-navbar .container-fluid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 /* Logo */
-
-.navbar-brand{
-    font-size: 42px;
+.navbar-brand {
+    font-size: clamp(28px, 4vw, 42px); /* Responsive font size */
     font-weight: 300;
     color: #e4b14b;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-
-    /* Add gap between logo and nav */
-    margin-right: 250px;
+    margin-right: 0; /* Removed hardcoded margin for layout flexibility */
+    text-decoration: none;
 }
 
-.navbar-brand:hover{
+.navbar-brand:hover {
     color: #e4b14b;
 }
 
-/* Space between logo and menu */
-.navbar-collapse{
-    margin-left: 50px;   /* Increase to 80px, 100px, 150px if needed */
+/* Navbar Collapse & Menu Alignment */
+.navbar-collapse {
+    margin-left: auto; /* Pushes the navigation menu dynamically to the right */
+    flex-grow: 0;
 }
 
-/* Menu */
-
-.navbar-nav .nav-item{
-    margin: 0 15px;
+/* Menu Items */
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
+
+.navbar-nav .nav-item {
+    margin: 0 10px;
+}
+
 .home-link {
     color: #dca639 !important;
 }
+
 .home-link:hover {
     color: #8b6508 !important;
 }
 
-.navbar-nav .nav-link{
+.navbar-nav .nav-link {
     color: #222;
     font-size: 15px;
     font-weight: 500;
     position: relative;
-    transition: .3s;
+    transition: color 0.3s ease;
+    padding: 8px 12px;
+    text-decoration: none;
 }
 
-.navbar-nav .nav-link:hover{
+.navbar-nav .nav-link:hover {
     color: #8b6508;
 }
 
-/* Active underline */
-
-.navbar-nav .nav-link.active::after{
+/* Active Underline Effect */
+.navbar-nav .nav-link.active::after {
     content: "";
     position: absolute;
     left: 0;
-    bottom: -10px;
+    bottom: -5px;
     width: 100%;
     height: 3px;
     background: #8b6508;
 }
 
 /* Contact Button */
-
-.contact-btn{
+.contact-btn {
     background: #8b6508;
-    color: #fff;
-    padding: 10px 28px;
+    color: #fff !important;
+    padding: 10px 24px;
     border-radius: 14px;
     font-weight: 500;
-    transition: .3s;
+    transition: background 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
 }
 
-.contact-btn:hover{
+.contact-btn:hover {
     background: #6d5007;
     color: #fff;
 }
 
-/* Responsive */
 
-@media(max-width:991px){
+/* ==========================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================== */
 
-.navbar-nav{
-    text-align:center;
-    margin:20px 0;
+/* Tablets and Laptops (max-width: 1199px) */
+@media (max-width: 1199px) {
+    .navbar-nav .nav-item {
+        margin: 0 5px;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 14px;
+    }
 }
 
-.contact-btn{
-    display:block;
-    width:150px;
-    margin:15px auto;
+/* Mobile & Tablet Toggle Breakpoint (max-width: 991px) */
+@media (max-width: 991px) {
+    .custom-navbar {
+        padding: 12px 0;
+    }
+
+    /* Mobile Menu Drawer Animation & Styling */
+    .navbar-collapse {
+        margin-left: 0;
+        width: 100%;
+        background: #fdf8ef;
+        padding: 20px;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+        border-top: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+        margin: 15px 0;
+    }
+
+    .navbar-nav .nav-item {
+        margin: 5px 0;
+        width: 100%;
+    }
+
+    /* Adjust underline for mobile */
+    .navbar-nav .nav-link.active::after {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        bottom: -2px;
+    }
+
+    /* Contact Button in Mobile View */
+    .contact-btn {
+        display: inline-block;
+        width: 100%;
+        max-width: 200px;
+        margin: 10px auto 0;
+        text-align: center;
+    }
 }
 
-}
+/* Small Screens / Mobile Phones (max-width: 576px) */
+@media (max-width: 576px) {
+    .custom-navbar {
+        padding: 10px 0;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 16px; /* Larger touch targets for mobile devices */
+        padding: 10px 0;
+    }
 }
  .main{
     background:url('./img/image.png') no-repeat center center;
